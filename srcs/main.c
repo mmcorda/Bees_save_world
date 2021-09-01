@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 12:11:54 by chchao            #+#    #+#             */
-/*   Updated: 2021/08/30 19:40:54 by chchao           ###   ########.fr       */
+/*   Updated: 2021/08/31 22:32:53 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,31 +57,31 @@ void	ft_print_map(t_window *win)
 		while (win->map[var.y][++var.x])
 		{
 			if (win->map[var.y][var.x] == '0')
-				mlx_put_image_to_window(&win->map_img, &win->ground, var.x * 50, var.y * 50);
+				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
 			else if (win->map[var.y][var.x] == '1')
-				mlx_put_image_to_window(&win->map_img, &win->wall, var.x * 50, var.y * 50);
+				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->wall.img, var.x * 50, var.y * 50);
 			else if (win->map[var.y][var.x] == 'E')
 			{
 				if (get_all(win->map))
 				{
-					mlx_put_image_to_window(&win->map_img, &win->ground, var.x * 50, var.y * 50);
-					mlx_put_image_to_window(&win->map_img, &win->open_door, var.x * 50, var.y * 50);
+					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
+					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->open_door.img, var.x * 50, var.y * 50);
 				}
 				else
 				{
-					mlx_put_image_to_window(&win->map_img, &win->ground, var.x * 50, var.y * 50);
-					mlx_put_image_to_window(&win->map_img, &win->close_door, var.x * 50, var.y * 50);
+					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
+					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->close_door.img, var.x * 50, var.y * 50);
 				}
 			}
 			else if (win->map[var.y][var.x] == 'C')
 			{
-				mlx_put_image_to_window(&win->map_img, &win->ground, var.x * 50, var.y * 50);
-				mlx_put_image_to_window(&win->map_img, &win->fire, var.x * 50, var.y * 50);
+				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
+				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->fire.img, var.x * 50, var.y * 50);
 			}
 			else if (win->map[var.y][var.x] == 'P')
 			{
-				mlx_put_image_to_window(&win->map_img, &win->ground, var.x * 50, var.y * 50);
-				mlx_put_image_to_window(&win->map_img, &win->player_right1, var.x * 50, var.y * 50);
+				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
+				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->player_right1.img, var.x * 50, var.y * 50);
 				win->player_pos.x = var.x * 50;
 				win->player_pos.y = var.y * 50;
 			}
@@ -97,47 +97,6 @@ void	ft_print_map(t_window *win)
 
 int deal_key(int key, t_window *win)
 {
-	if (key == KEY_ECHAP)
-        exit(53);
-	if (key == KEY_W)
-	{
-		if (win->player_pos.y >= 50
-			&& win->map[win->player_pos.y / 50 - 1][win->player_pos.x / 50] != '1' && win->map[win->player_pos.y / 50 - 1][win->player_pos.x / 50] != 'E')
-			win->player_pos.y -= 50;
-		else if (win->player_pos.y >= 50
-			&& win->map[win->player_pos.y / 50 - 1][win->player_pos.x / 50] != '1' && get_all(win->map))
-			win->player_pos.y -= 50;
-	}
-	else if (key == KEY_A)
-	{
-		if (win->player_pos.x >= 50
-			&& win->map[win->player_pos.y / 50][win->player_pos.x / 50 - 1] != '1' && win->map[win->player_pos.y / 50][win->player_pos.x / 50 - 1] != 'E')
-			win->player_pos.x -= 50;
-		else if (win->player_pos.x >= 50
-			&& win->map[win->player_pos.y / 50][win->player_pos.x / 50 - 1] != '1' && get_all(win->map))
-			win->player_pos.x -= 50;
-	}
-	else if (key == KEY_D)
-	{
-		if (win->player_pos.x >= 50
-			&& win->map[win->player_pos.y / 50][win->player_pos.x / 50 + 1] != '1' && win->map[win->player_pos.y / 50][win->player_pos.x / 50 + 1] != 'E')
-			win->player_pos.x += 50;
-		else if (win->player_pos.x >= 50
-			&& win->map[win->player_pos.y / 50][win->player_pos.x / 50 + 1] != '1' && get_all(win->map))
-			win->player_pos.x += 50;
-	}
-	else if (key == KEY_S)
-	{
-		if (win->player_pos.y >= 50
-			&& win->map[win->player_pos.y / 50 + 1][win->player_pos.x / 50] != '1' && win->map[win->player_pos.y / 50 + 1][win->player_pos.x / 50] != 'E')
-			win->player_pos.y += 50;
-		else if (win->player_pos.y >= 50
-			&& win->map[win->player_pos.y / 50 + 1][win->player_pos.x / 50] != '1' && get_all(win->map))
-			win->player_pos.y += 50;
-	}
-
-	if (win->map[win->player_pos.y / 50][win->player_pos.x / 50] == 'C')
-		win->map[win->player_pos.y / 50][win->player_pos.x / 50] = '0';
 	printf("%d\n", key);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->player_down.img, 0, 0);
     return (0);
@@ -149,18 +108,18 @@ int	main(int ac, char **av)
 	
 	if (ac != 2)
 		return (0);
+	win.mlx_ptr = mlx_init();
+	ft_define_img(&win);
 	if (ft_parsing(&win, av[1]))
 	{
-		win.mlx_ptr = mlx_init();
 		printf ("%d %d\n", build_width(av[1]), build_height(av[1]));
 		win.map_img.height = build_height(av[1]) * 50;
 		win.map_img.width = build_width(av[1]) * 50;
-	
 		win.win_ptr = mlx_new_window(win.mlx_ptr, win.map_img.width, win.map_img.height, "so_long");
 		win.map_img.img = mlx_new_image(win.mlx_ptr, win.map_img.width, win.map_img.height);
-		ft_define_img(&win);
+		ft_print_map(&win);
 		mlx_hook(win.win_ptr, 2, 1L<<0, deal_key, &win);
-	//	mlx_loop_hook(win.win_ptr, )
+		mlx_put_image_to_window(win.mlx_ptr, win.win_ptr, win.map_img.img, 0, 0);
 		mlx_loop(win.mlx_ptr);
 	}
 	return (0);

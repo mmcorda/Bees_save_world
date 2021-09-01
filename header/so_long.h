@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:46:25 by chchao            #+#    #+#             */
-/*   Updated: 2021/08/30 19:29:52 by chchao           ###   ########.fr       */
+/*   Updated: 2021/08/31 20:36:39 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,20 @@ typedef struct s_window
 	t_sprite	open_door;
 }	t_window;
 
+typedef struct	s_data
+{
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
+
 int 	get_next_line(int fd, char **line);
 int		ft_parsing(t_window *win, char *file);
 void	ft_define_img(t_window *win);
 int 	deal_key(int key, t_window *win);
 int 	get_all(char **map);
 void	ft_print_map(t_window *win);
+void	ft_my_mlx_pixel_put(t_sprite *dst, t_sprite *src, int x, int y);
 
 #endif
