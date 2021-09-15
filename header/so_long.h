@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:46:25 by chchao            #+#    #+#             */
-/*   Updated: 2021/08/31 20:36:39 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/15 16:30:40 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_window
 	char		**map;
 	t_check_map	player_pos;
 	t_sprite	map_img;
-	t_sprite	ground;
+	t_sprite	grass;
 	t_sprite	wall;
 	t_sprite	fire;
 	t_sprite	player_up;
@@ -73,7 +73,7 @@ int 	get_next_line(int fd, char **line);
 int		ft_parsing(t_window *win, char *file);
 void	ft_define_img(t_window *win);
 int 	deal_key(int key, t_window *win);
-int 	get_all(char **map);
+int 	ft_get_all(char **map);
 void	ft_print_map(t_window *win);
 void	ft_my_mlx_pixel_put(t_sprite *dst, t_sprite *src, int x, int y);
 

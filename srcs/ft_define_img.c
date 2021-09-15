@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 15:15:30 by chchao            #+#    #+#             */
-/*   Updated: 2021/08/30 19:15:15 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/15 14:49:41 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_define_img(t_window *win)
 {
-	win->ground.img = mlx_xpm_file_to_image(win->mlx_ptr, "data/ground.xpm",
-		&win->ground.width, &win->ground.height);
+	win->grass.img = mlx_xpm_file_to_image(win->mlx_ptr, "data/grass.xpm",
+		&win->grass.width, &win->grass.height);
 	win->wall.img = mlx_xpm_file_to_image(win->mlx_ptr, "data/wall.xpm",
 		&win->wall.width, &win->wall.height);
 	win->fire.img = mlx_xpm_file_to_image(win->mlx_ptr, "data/fire.xpm",

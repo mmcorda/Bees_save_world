@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 12:11:54 by chchao            #+#    #+#             */
-/*   Updated: 2021/08/31 22:32:53 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/15 16:42:22 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,41 +57,18 @@ void	ft_print_map(t_window *win)
 		while (win->map[var.y][++var.x])
 		{
 			if (win->map[var.y][var.x] == '0')
-				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
+				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->grass.img, var.y * 50, var.x * 50);
 			else if (win->map[var.y][var.x] == '1')
-				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->wall.img, var.x * 50, var.y * 50);
-			else if (win->map[var.y][var.x] == 'E')
-			{
-				if (get_all(win->map))
-				{
-					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
-					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->open_door.img, var.x * 50, var.y * 50);
-				}
-				else
-				{
-					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
-					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->close_door.img, var.x * 50, var.y * 50);
-				}
-			}
-			else if (win->map[var.y][var.x] == 'C')
-			{
-				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
-				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->fire.img, var.x * 50, var.y * 50);
-			}
-			else if (win->map[var.y][var.x] == 'P')
-			{
-				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->ground.img, var.x * 50, var.y * 50);
-				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->player_right1.img, var.x * 50, var.y * 50);
-				win->player_pos.x = var.x * 50;
-				win->player_pos.y = var.y * 50;
-			}
+				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->wall.img, var.y * 50, var.x * 50);
+				
+			// else if (win->map[var.y][var.x] == 'P')
+			// {
+			// 	ft_my_mlx_pixel_put(&win->map_img, &win->grass, var.x * 50, var.y * 50);
+			// 	ft_my_mlx_pixel_put(&win->map_img, &win->player_right1, var.x * 50, var.y * 50);
+			// 	win->player_pos.x = var.x * 50;
+			// 	win->player_pos.y = var.y * 50;
+			// }
 		}
-	}
-	var.k = 0;
-	while (win->map[var.k])
-	{
-		printf("%s\n", win->map[var.k]);
-		var.k++;
 	}
 }
 
@@ -115,11 +92,17 @@ int	main(int ac, char **av)
 		printf ("%d %d\n", build_width(av[1]), build_height(av[1]));
 		win.map_img.height = build_height(av[1]) * 50;
 		win.map_img.width = build_width(av[1]) * 50;
-		win.win_ptr = mlx_new_window(win.mlx_ptr, win.map_img.width, win.map_img.height, "so_long");
-		win.map_img.img = mlx_new_image(win.mlx_ptr, win.map_img.width, win.map_img.height);
+		if (win.map_img.width < 500 && win.map_img.height < 500)
+			win.win_ptr = mlx_new_window(win.mlx_ptr, win.map_img.width, win.map_img.height, "so_long");
+		else if (win.map_img.width < 500)
+			win.win_ptr = mlx_new_window(win.mlx_ptr, win.map_img.width, 500, "so_long");
+		else if (win.map_img.height < 500)
+			win.win_ptr = mlx_new_window(win.mlx_ptr, 500, win.map_img.height, "so_long");
+		else
+			win.win_ptr = mlx_new_window(win.mlx_ptr, 500, 500, "so_long");
 		ft_print_map(&win);
-		mlx_hook(win.win_ptr, 2, 1L<<0, deal_key, &win);
-		mlx_put_image_to_window(win.mlx_ptr, win.win_ptr, win.map_img.img, 0, 0);
+		//mlx_hook(win.win_ptr, 2, 1L<<0, deal_key, &win);
+		//mlx_put_image_to_window(win.mlx_ptr, win.win_ptr, win.map_img.img, 0, 0);
 		mlx_loop(win.mlx_ptr);
 	}
 	return (0);

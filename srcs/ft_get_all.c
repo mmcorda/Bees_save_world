@@ -6,13 +6,13 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:09:53 by chchao            #+#    #+#             */
-/*   Updated: 2021/08/30 19:10:54 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/15 16:31:15 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-int get_all(char **map)
+int ft_get_all(char **map)
 {
 	int y = -1;
 	int x = -1;
