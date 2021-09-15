@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:46:25 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/15 16:30:40 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/15 20:50:23 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ typedef struct s_check_map
 	int player;
 }	t_check_map;
 
+typedef struct s_sens
+{
+	int up;
+	int down;
+	int right;
+	int lift;
+} t_sens;
+
 typedef struct s_sprite
 {
 	int		width;
@@ -50,13 +58,13 @@ typedef struct s_window
 	t_sprite	map_img;
 	t_sprite	grass;
 	t_sprite	wall;
-	t_sprite	fire;
-	t_sprite	player_up;
-	t_sprite	player_down;
-	t_sprite	player_left1;
-	t_sprite	player_left2;
-	t_sprite	player_right1;
-	t_sprite	player_right2;
+	t_sprite	flower;
+	t_sprite	player;
+	// t_sprite	player_down;
+	// t_sprite	player_left1;
+	// t_sprite	player_left2;
+	// t_sprite	player_right1;
+	// t_sprite	player_right2;
 	t_sprite	close_door;
 	t_sprite	open_door;
 }	t_window;
