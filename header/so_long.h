@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:46:25 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/15 20:50:23 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/16 15:28:14 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct	s_data
 int 	get_next_line(int fd, char **line);
 int		ft_parsing(t_window *win, char *file);
 void	ft_define_img(t_window *win);
-int 	deal_key(int key, t_window *win);
+int 	deal_key(int key, t_window *win, t_check_map var);
 int 	ft_get_all(char **map);
 void	ft_print_map(t_window *win);
 void	ft_my_mlx_pixel_put(t_sprite *dst, t_sprite *src, int x, int y);
