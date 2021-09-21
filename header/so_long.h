@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:46:25 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/16 15:28:14 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/21 13:48:18 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ typedef struct s_window
 	t_sprite	wall;
 	t_sprite	flower;
 	t_sprite	player;
-	// t_sprite	player_down;
-	// t_sprite	player_left1;
-	// t_sprite	player_left2;
-	// t_sprite	player_right1;
-	// t_sprite	player_right2;
 	t_sprite	close_door;
 	t_sprite	open_door;
 }	t_window;
@@ -84,5 +79,6 @@ int 	deal_key(int key, t_window *win, t_check_map var);
 int 	ft_get_all(char **map);
 void	ft_print_map(t_window *win);
 void	ft_my_mlx_pixel_put(t_sprite *dst, t_sprite *src, int x, int y);
+void	print_map(char **map);
 
 #endif
