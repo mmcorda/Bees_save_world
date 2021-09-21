@@ -6,7 +6,7 @@
 #    By: chchao <chchao@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 15:35:27 by chchao            #+#    #+#              #
-#    Updated: 2021/08/31 22:20:26 by chchao           ###   ########.fr        #
+#    Updated: 2021/09/21 19:57:22 by chchao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ FOLDER			= srcs/
 HEADER_FILE 	= so_long.h
 
 SRCS    		= ft_parsing.c get_next_line.c main.c \
-				  ft_define_img.c ft_get_all.c ft_my_mlx_pixel_put.c 
+				  ft_define_img.c ft_get_all.c ft_my_mlx_pixel_put.c \
+				  ft_game_over.c
 
 SRC				= $(addprefix ${FOLDER},${SRCS})
 

@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:46:25 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/21 13:48:18 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/21 19:47:24 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_check_map
 	int x;
 	int k;
 	int exit;
-	int coltive;
-	int player;
+	int pos_x;
+	int pos_y;
 }	t_check_map;
 
 typedef struct s_sens
@@ -80,5 +80,10 @@ int 	ft_get_all(char **map);
 void	ft_print_map(t_window *win);
 void	ft_my_mlx_pixel_put(t_sprite *dst, t_sprite *src, int x, int y);
 void	print_map(char **map);
+void	ft_right(int key, t_window *win);
+void	ft_lift(int key, t_window *win);
+void	ft_up(int key, t_window *win);
+void	ft_down(int key, t_window *win);
+int		ft_game_over(void);
 
 #endif

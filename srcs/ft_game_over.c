@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_all.c                                       :+:      :+:    :+:   */
+/*   ft_game_over.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/30 19:09:53 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/21 19:56:21 by chchao           ###   ########.fr       */
+/*   Created: 2021/09/21 19:28:50 by chchao            #+#    #+#             */
+/*   Updated: 2021/09/21 19:32:19 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-int ft_get_all(char **map)
+int	ft_game_over(void)
 {
-	int y = -1;
-	int x = -1;
-
-	while (map[++y])
-		while (map[y][++x])
-			if (map[y][x] == 'C') 
-				return (0);
-	return (1);
+	exit(0);
 }
