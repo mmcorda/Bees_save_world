@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:46:25 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/21 19:47:24 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/22 13:44:36 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_check_map
 	int x;
 	int k;
 	int exit;
+	int coltive;
+	int player;
 	int pos_x;
 	int pos_y;
 }	t_check_map;

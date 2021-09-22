@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 15:11:19 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/01 18:16:29 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/22 13:45:35 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int	ft_parsing(t_window *win, char *file)
 	if (!ft_print_next_line(win, file, nbr_line)
 		|| !ft_check_walls(win->map, nbr_line - 1))
 	{
-		printf("Error: Your maps eroner\n");
+		printf("Error: Oops! Your map is erroneous\n");
 		return (0);
 	}
 	return (1);
