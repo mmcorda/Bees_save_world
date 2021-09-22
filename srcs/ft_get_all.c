@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:09:53 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/21 19:56:21 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/22 19:02:04 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int ft_get_all(char **map)
 {
 	int y = -1;
 	int x = -1;
-
-	while (map[++y])
-		while (map[y][++x])
-			if (map[y][x] == 'C') 
+	
+	while (map[++x])
+		while (map[x][++y])
+			if (map[x][y] == 'C') 
 				return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:46:25 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/22 13:44:36 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/22 18:45:21 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@ typedef struct s_check_map
 	int pos_y;
 }	t_check_map;
 
-typedef struct s_sens
-{
-	int up;
-	int down;
-	int right;
-	int lift;
-} t_sens;
-
 typedef struct s_sprite
 {
 	int		width;
@@ -64,15 +56,8 @@ typedef struct s_window
 	t_sprite	player;
 	t_sprite	close_door;
 	t_sprite	open_door;
+	t_sprite	bee;
 }	t_window;
-
-typedef struct	s_data
-{
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
 
 int 	get_next_line(int fd, char **line);
 int		ft_parsing(t_window *win, char *file);

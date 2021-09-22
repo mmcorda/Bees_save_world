@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:28:50 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/22 13:34:46 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/22 19:08:44 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	ft_game_over(void)
 {	
 	t_window win;
 	
-	//mlx_clear_window(win.mlx_ptr, win.win_ptr);
+	printf("in\n");
 	mlx_destroy_window(win.mlx_ptr, win.win_ptr);
-	
 	exit(0);
 }

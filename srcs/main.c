@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 12:11:54 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/22 13:41:26 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/22 19:08:13 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,27 @@ void	ft_print_map(t_window *win)
 {
 	t_check_map	var;
 
-	var.x = -1;
-	while (win->map[++var.x])
+	var.x = 0;
+	while (win->map[var.x])
 	{
-		var.y = -1;
-		while (win->map[var.x][++var.y])
+		var.y = 0;
+		while (win->map[var.x][var.y])
 		{
 			if (win->map[var.x][var.y] == '0')
+			{
+				//printf("in\n");
+				//printf("%c\n", win->map[var.y][var.x]);
 				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->grass.img, var.y * 50, var.x * 50);
+			}
 			else if (win->map[var.x][var.y] == '1')
+			{
+				//printf("%c\n", win->map[var.x][var.y]);
 				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->wall.img, var.y * 50, var.x * 50);
+				//printf("%c\n", win->map[var.x][var.y]);
+			}
 			else if (win->map[var.x][var.y] == 'P')
 			{
+				//printf("in2\n");
 				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->player.img, var.y * 50, var.x * 50);
 				win->player_pos.x = var.x * 50;
 				win->player_pos.y = var.y * 50;
@@ -82,15 +91,19 @@ void	ft_print_map(t_window *win)
 				win->player_pos.pos_y = var.y;
 				// printf("POS Y = %d POS X = %d \n", win->player_pos.pos_y, win->player_pos.pos_x);
 			}
+			
 			else if (win->map[var.x][var.y] == 'C')
 			{
+				//printf("in\n");
 				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->grass.img, var.y * 50, var.x * 50);
 				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->flower.img, var.y * 50, var.x * 50);
 			}
 			else if (win->map[var.x][var.y] == 'E')
 			{
+				//printf("in\n");
 				if (ft_get_all(win->map))
 				{
+					//printf("in\n");
 					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->grass.img, var.y * 50, var.x * 50);
 					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->open_door.img, var.y * 50, var.x * 50);
 				}
@@ -100,15 +113,16 @@ void	ft_print_map(t_window *win)
 					mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->close_door.img, var.y * 50, var.x * 50);
 				}
 			}
+			var.y++;
 		}
+		var.x++;
 	}
 }
 
 void	ft_right(int key, t_window *win)
 {	
 	int trace;
-	//int	i;
-	
+
 	trace = win->player_pos.y / 50;
 	if (key == 2 && win->map[win->player_pos.x / 50][(win->player_pos.y / 50) + 1] != '1' && win->map[win->player_pos.x / 50][(win->player_pos.y / 50) + 1] != 'E')
 	{
@@ -120,10 +134,9 @@ void	ft_right(int key, t_window *win)
 		//printf("in\n%c\n", win->map[win->player_pos.y + 1 / 50][win->player_pos.x / 50]);
 		//printf("%c\n", win->map[win->player_pos.y / 50][win->player_pos.x / 50]);
 	}
-	else if (key == 2 && win->map[win->player_pos.x / 50][(win->player_pos.y / 50) + 1] == 'E' && ft_get_all(win->map))
+	else if(key == 2 && ft_get_all(win->map) && win->map[win->player_pos.x / 50][(win->player_pos.y / 50) + 1] == 'E')
 	{
 		win->player_pos.y += 50;
-		//mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->open_door.img, win->player_pos.y, win->player_pos.x);
 		printf("%s\n", "You Win");
 		ft_game_over();
 	}
@@ -142,12 +155,12 @@ void	ft_down(int key, t_window *win)
 		printf("%d\n", trace++);
 		//print_map(win->map);
 	}
-	else if (key == 1 && win->map[(win->player_pos.x / 50) + 1][(win->player_pos.y / 50) + 1] == 'E' && ft_get_all(win->map))
-	{
-		win->player_pos.x += 50;
-		printf("%s\n", "You Win");
-		ft_game_over();
-	}
+	// else if (key == 1 && win->map[(win->player_pos.x / 50) + 1][(win->player_pos.y / 50) + 1] == 'E' && ft_get_all(win->map))
+	// {
+	// 	win->player_pos.x += 50;
+	// 	printf("%s\n", "You Win");
+	// 	ft_game_over();
+	// }
 }
 
 void	ft_lift(int key, t_window *win)
@@ -156,20 +169,20 @@ void	ft_lift(int key, t_window *win)
 	
 	trace = win->player_pos.y / 50;
 	if (key == 0 && win->map[win->player_pos.x / 50][(win->player_pos.y / 50) - 1] != '1' && win->map[win->player_pos.x / 50][(win->player_pos.y / 50) - 1] != 'E') 
-	{ 	
+	{ 
 		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->grass.img, win->player_pos.y, win->player_pos.x);
 		win->player_pos.y -= 50;
 		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->player.img, win->player_pos.y, win->player_pos.x);
 		printf("%d\n", trace--);
 		//print_map(win->map);
 	}
-	else if (key == 0 && win->map[(win->player_pos.x / 50)][(win->player_pos.y / 50) - 1] == 'E' && ft_get_all(win->map))
-	{
-		win->player_pos.y -= 50;
-		//mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->open_door.img, win->player_pos.y, win->player_pos.x);
-		printf("%s\n", "You Win");
-		ft_game_over();
-	}
+	// else if (key == 0 && win->map[(win->player_pos.x / 50)][(win->player_pos.y / 50) - 1] == 'E' && ft_get_all(win->map))
+	// {
+	// 	win->player_pos.y -= 50;
+	// 	//mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->open_door.img, win->player_pos.y, win->player_pos.x);
+	// 	printf("%s\n", "You Win");
+	// 	ft_game_over();
+	// }
 }
 
 void	ft_up(int key, t_window *win)
@@ -185,13 +198,13 @@ void	ft_up(int key, t_window *win)
 		printf("%d\n", trace--);
 		// print_map(win->map);
 	}
-	else if (key == 13 && win->map[(win->player_pos.x / 50) - 1][win->player_pos.y / 50] == 'E' && ft_get_all(win->map))
-	{
-		win->player_pos.y -= 50;
-		//mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->open_door.img, win->player_pos.y, win->player_pos.x);
-		printf("%s\n", "You Win");
-		ft_game_over();
-	}
+	// else if (key == 13 && win->map[(win->player_pos.x / 50) - 1][win->player_pos.y / 50] == 'E' && ft_get_all(win->map))
+	// {
+	// 	win->player_pos.y -= 50;
+	// 	//mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->open_door.img, win->player_pos.y, win->player_pos.x);
+	// 	printf("%s\n", "You Win");
+	// 	ft_game_over();
+	// }
 	
 }
 
@@ -217,18 +230,9 @@ int	main(int ac, char **av)
 	ft_define_img(&win);
 	if (ft_parsing(&win, av[1]))
 	{
-		//printf ("%d %d\n", build_width(av[1]), build_height(av[1]));
 		win.map_img.height = build_height(av[1]) * 50;
 		win.map_img.width = build_width(av[1]) * 50;
 		win.win_ptr = mlx_new_window(win.mlx_ptr, win.map_img.width, win.map_img.height, "so_long");
-		// if (win.map_img.width < 800 && win.map_img.height < 800)
-		// 	win.win_ptr = mlx_new_window(win.mlx_ptr, win.map_img.width, win.map_img.height, "so_long");
-		// else if (win.map_img.width < 800)
-		// 	win.win_ptr = mlx_new_window(win.mlx_ptr, win.map_img.width, 800, "so_long");
-		// else if (win.map_img.height < 800)
-		// 	win.win_ptr = mlx_new_window(win.mlx_ptr, 800, win.map_img.height, "so_long");
-		// else
-		// 	win.win_ptr = mlx_new_window(win.mlx_ptr, 800, 800, "so_long");
 		ft_print_map(&win);
 		mlx_hook(win.win_ptr, 2, 0, deal_key, &win);
 		// mlx_put_image_to_window(win.mlx_ptr, win.win_ptr, win.map_img.img, 0, 0);
