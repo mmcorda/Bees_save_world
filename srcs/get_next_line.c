@@ -13,7 +13,7 @@
 #include "../header/so_long.h"
 #include "../header/mlx_keycode.h"
 
-static int ft_search_ch(char *str, char c)
+static int	ft_search_ch(char *str, char c)
 {
 	int	i;
 
@@ -26,6 +26,7 @@ static int ft_search_ch(char *str, char c)
 	}
 	return (-1);
 }
+
 static int	ft_cutline(int index, char *rest, char **line)
 {
 	int	len;
@@ -36,12 +37,14 @@ static int	ft_cutline(int index, char *rest, char **line)
 	rest = ft_memmove(rest, rest + index, len);
 	return (1);
 }
+
 char	*ft_jointfree(char *s1, char *s2)
 {
+	int		i;
 	char	*join;
 	size_t	len1;
 	size_t	len2;
-	int		i;
+
 	i = -1;
 	if (!s1)
 		return (ft_strdup(s2));
@@ -63,7 +66,7 @@ char	*ft_jointfree(char *s1, char *s2)
 	return (join);
 }
 
-static void ft_clean(char **rest, char **line)
+static void	ft_clean(char **rest, char **line)
 {
 	if (rest)
 	{
@@ -75,9 +78,9 @@ static void ft_clean(char **rest, char **line)
 		*line = ft_strdup("");
 }
 
-int get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	static char *rest = NULL;
+	static char	*rest = NULL;
 	char		buf[BUFFER_SIZE + 1];
 	int			lu;
 	int			index;
@@ -101,5 +104,4 @@ int get_next_line(int fd, char **line)
 	}
 	ft_clean(&rest, line);
 	return (0);
-
 }

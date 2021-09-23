@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 10:18:51 by mac               #+#    #+#             */
-/*   Updated: 2021/04/08 16:25:15 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 19:01:26 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static int	char_in_set(char c, const char *set)
 {
 	int		i;

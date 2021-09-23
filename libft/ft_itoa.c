@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:25:53 by mac               #+#    #+#             */
-/*   Updated: 2021/04/08 15:48:55 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 18:58:34 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*ft_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] ='\0';
+	dest[i] = '\0';
 	return (dest);
 }
 

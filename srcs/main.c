@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 12:11:54 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 16:48:04 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 18:56:10 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 static	int	build_height(char *file)
 {
-	int fd;
-	int nbr_line;
-	char *line;
+	int		fd;
+	int		nbr_line;
+	char	*line;
 
 	nbr_line = 0;
 	fd = open(file, O_RDONLY);
@@ -33,9 +33,9 @@ static	int	build_height(char *file)
 
 static	int	build_width(char *file)
 {
-	int fd;
-	char *line;
-	int	i;
+	int		fd;
+	char	*line;
+	int		i;
 
 	i = 0;
 	fd = open(file, O_RDONLY);
@@ -46,12 +46,12 @@ static	int	build_width(char *file)
 	return (i);
 }
 
-int deal_key(int key, t_window *win)
+int	deal_key(int key, t_window *win)
 {
 	if (key == KEY_ECHAP)
-        exit(0);
+		exit(0);
 	ft_move(key, win);
-    return (0);
+	return (0);
 }
 
 int	ft_esc(t_window *win)
@@ -64,16 +64,20 @@ int	ft_esc(t_window *win)
 int	main(int ac, char **av)
 {
 	t_window	win;
-	
+
 	if (ac != 2)
+	{
+		printf("\e[0;35mEeeor ? You mean ./so_long map/basic_map.ber !\n");
 		return (0);
+	}
 	win.mlx_ptr = mlx_init();
 	ft_define_img(&win);
 	if (ft_parsing(&win, av[1]))
 	{
 		win.map_img.height = build_height(av[1]) * 50;
 		win.map_img.width = build_width(av[1]) * 50;
-		win.win_ptr = mlx_new_window(win.mlx_ptr, win.map_img.width, win.map_img.height, "so_long");
+		win.win_ptr = mlx_new_window(win.mlx_ptr, \
+			win.map_img.width, win.map_img.height, "so_long");
 		ft_print_map(&win);
 		mlx_hook(win.win_ptr, 2, 0, deal_key, &win);
 		mlx_hook(win.win_ptr, 17, 0, ft_esc, &win);
@@ -81,12 +85,3 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
-
-// makefile 要藏libimlx.a compile的過程，
-// 顯示keycode的指標（我寫錯），
-
-// 超大型地圖人物移動要地圖跟著動
-// parsing
-// 測試mep.ber(空白欓)要回覆error, 
-// .ber檔案裡面只有兩行1111111111要回復錯誤，
-// 牆壁如果被Ｐ,Ｅ,Ｃ，取帶要顯是錯誤，

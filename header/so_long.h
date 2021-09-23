@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:39:37 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 16:16:23 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 18:47:55 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ typedef struct s_window
 	void		*mlx_ptr;
 	void		*win_ptr;
 	char		**map;
-	t_check_map	player_pos;
+	t_check_map	ps;
 	t_sprite	map_img;
 	t_sprite	grass;
 	t_sprite	wall;
 	t_sprite	flower;
 	t_sprite	player;
-	t_sprite	close_door;
-	t_sprite	open_door;
+	t_sprite	close;
+	t_sprite	open;
 	t_sprite	bee;
 }	t_window;
 
@@ -67,6 +67,9 @@ void	ft_define_img(t_window *win);
 int		deal_key(int key,t_window *win);
 int		ft_get_all(char **map);
 void	ft_print_map(t_window *win);
+void	ft_print_map_exit(t_window *win, t_check_map var);
+void	ft_print_map_flower(t_window *win, t_check_map var);
+void	ft_print_map_bee(t_window *win, t_check_map var);
 void	print_map(char **map);
 void	ft_right(int key, t_window *win);
 void	ft_lift(int key, t_window *win);

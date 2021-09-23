@@ -6,15 +6,12 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 15:11:19 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 16:55:00 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:36:23 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
-#include "../header/mlx_keycode.h"
-#include "../libft/libft.h"
 
-//check ".ber"
 static int	ft_check_name(char *file, char const *ext)
 {
 	int	size_file;
@@ -34,7 +31,6 @@ static int	ft_check_name(char *file, char const *ext)
 	return (1);
 }
 
-// ELLE AU MINI P/E/C + WALL, FAUT PAS QU'IL Y A DE ' ' dans la carte
 static	int	ft_check_walls(char **map, int line)
 {
 	t_check_map	var;
@@ -46,13 +42,9 @@ static	int	ft_check_walls(char **map, int line)
 		var.x = -1;
 		while (map[var.y][++var.x])
 		{
-			
 			if (map[0][var.x] != '1' || map[line][var.x] != '1' || (map[var.y]
 				[0] != '1' || map[var.y][ft_strlen(map[var.y]) - 1] != '1'))
-			{
-				//printf("%c\n", map[var.y][0]);
 				return (0);
-			}
 			else if (map[var.y][var.x] == 'E')
 				var.exit++;
 			else if (map[var.y][var.x] == 'C')
@@ -68,7 +60,6 @@ static	int	ft_check_walls(char **map, int line)
 	return (1);
 }
 
-// Recuperer maps in win->map (char **map)
 static int	ft_print_next_line(t_window *win, char *file, int nbr_line)
 {
 	int		i;
@@ -127,15 +118,14 @@ int	ft_parsing(t_window *win, char *file)
 	close(fd);
 	if (nbr_line < 3)
 	{
-		printf("\e[1;30mError: Oops! Less than three lines\n");
+		printf("\e[1;30mError: Oops! Map Less than 3 lines or Empty\n");
 		return (0);
 	}
 	if (!ft_print_next_line(win, file, nbr_line)
 		|| !ft_check_walls(win->map, nbr_line - 1))
 	{
-		printf("Error: Oops! Your map is erroneous\n");
+		printf("Error: Oops! Something wrong in your map\n");
 		return (0);
 	}
 	return (1);
 }
-

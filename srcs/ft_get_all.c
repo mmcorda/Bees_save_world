@@ -6,17 +6,17 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:09:53 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 10:58:28 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:49:40 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-int ft_get_all(char **map)
+int	ft_get_all(char **map)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	x = 0;
 	while (map[x])
 	{

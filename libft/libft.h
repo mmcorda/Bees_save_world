@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chchao <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 10:23:48 by chchao            #+#    #+#             */
-/*   Updated: 2021/04/07 16:33:44 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 19:01:54 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
-void	*ft_calloc (size_t count, size_t size);
+void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(int n);
 int		ft_isalnum(int c);
 int		ft_isalpha(int i);
@@ -26,7 +26,7 @@ int		ft_isprint(int c);
 int		ft_isdigit(int c);
 int		ft_isascii(int c);
 char	**ft_split(char const *s, char c);
-size_t	ft_strlen (const char *str);
+size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
