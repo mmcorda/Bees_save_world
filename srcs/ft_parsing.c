@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 15:11:19 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/22 13:45:35 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:55:00 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,14 @@ static	int	ft_check_walls(char **map, int line)
 		var.x = -1;
 		while (map[var.y][++var.x])
 		{
+			
 			if (map[0][var.x] != '1' || map[line][var.x] != '1' || (map[var.y]
-				[0] != '1' && map[var.y][ft_strlen(map[var.y]) - 1] != '1'))
+				[0] != '1' || map[var.y][ft_strlen(map[var.y]) - 1] != '1'))
+			{
+				//printf("%c\n", map[var.y][0]);
 				return (0);
-			if (map[var.y][var.x] == 'E')
+			}
+			else if (map[var.y][var.x] == 'E')
 				var.exit++;
 			else if (map[var.y][var.x] == 'C')
 				var.coltive++;
@@ -122,7 +126,10 @@ int	ft_parsing(t_window *win, char *file)
 	nbr_line = count_line(fd);
 	close(fd);
 	if (nbr_line < 3)
+	{
+		printf("\e[1;30mError: Oops! Less than three lines\n");
 		return (0);
+	}
 	if (!ft_print_next_line(win, file, nbr_line)
 		|| !ft_check_walls(win->map, nbr_line - 1))
 	{
@@ -131,3 +138,4 @@ int	ft_parsing(t_window *win, char *file)
 	}
 	return (1);
 }
+

@@ -6,9 +6,18 @@
 #    By: chchao <chchao@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 15:35:27 by chchao            #+#    #+#              #
-#    Updated: 2021/09/22 13:20:49 by chchao           ###   ########.fr        #
+#    Updated: 2021/09/23 17:03:34 by chchao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# Colors
+GREY = \x1b[30m
+RED = \x1b[31m
+GREEN = \x1b[32m
+YELLOW = \x1b[33m
+BLUE = \x1b[34m
+PURPLE = \x1b[35m
+CYAN = \x1b[36m
 
 NAME 	 		= so_long
 
@@ -17,17 +26,24 @@ FOLDER_HEADER	= header/
 
 FOLDER			= srcs/
 
-HEADER_FILE 	= so_long.h
+PATH_OBJS		= objs/
+
+HEADER_FILE 	= so_long.h\
+				  mlx_keycode.h
 
 SRCS    		= ft_parsing.c get_next_line.c main.c \
-				  ft_define_img.c ft_get_all.c ft_my_mlx_pixel_put.c \
-				  ft_game_over.c
+				  ft_define_img.c ft_get_all.c ft_print_map.c\
+				  ft_move.c ft_game_over.c
 
 SRC				= $(addprefix ${FOLDER},${SRCS})
 
 HEADERS			= $(addprefix ${FOLDER_HEADER},${HEADER_FILE})
 
 OBJS			= ${SRC:.c=.o}
+
+LIB				= libft.a
+
+LIBFT			= libft/libft.a
 
 #                   ############################################################
 #	COMPILATION		############################################################
@@ -37,33 +53,38 @@ FLAGS    		= -Wall -Werror -Wextra
 
 RM				= rm -rf
 
-UNAME_S			= $(shell uname -s)
+MLX				= minilibx/libmlx.a
 
-ifeq ($(UNAME_S),Linux)
-		LIBS 	= -L ./libft -lft -lmlx -lXext -lX11
-endif
-ifeq ($(UNAME_S),Darwin)
-		LIBS 	= -L ./libft -lft -lmlx -framework OpenGL -framework AppKit -lz
-endif
-
-COMPIL			= $(CC) $(FLAGS) ${OBJS} $(LIBS) -o $(NAME)
-
+LIB_MLX		 	= -I minilibx -L minilibx -lmlx -framework OpenGL -framework Appkit
+ 
 #	   RULES	   #############################################################
-$(NAME) : $(OBJS)
-		@make -C ./libft
-		@$(COMPIL)
-		
-all : $(NAME)	
 
-%.o : %.c
-		@$(CC) $(FLAGS) -c $< -o $@
-		@printf "making so_long objects... %-33.33s\r" $@
-		@$(CC) -c $(FLAGS) -o $@ $<
+all : $(MLX) $(LIB) $(NAME)
+
+%.o	: %.c $(HEADERS)
+				  @cp Libft/libft.a ./$(NAME)
+				  @printf "Please wait... $@\r"
+				  @echo "$(GREEN)[Compiled]:\t$(CYAN)"$<
+			  	  $(CC) $(FLAGS) -c $< -o $@
+
+$(LIB):
+					@make -C Libft all
+
+$(MLX)			:
+			  	  @$(MAKE) -C minilibx/
+
+$(NAME)	: $(OBJS) $(HEADERS)
+		  @$(CC) $(FLAGS) $(LIB_MLX) $(LIBFT) $(OBJS) -o $(NAME)
+		  @echo "\n$(GREEN)[OK]:\t\t$(YELLOW)Minilibx"
+		  @echo "$(GREEN)[OK]:\t\t$(YELLOW)so_long"
+
 clean :
+		$(MAKE) clean -C minilibx/
+		$(MAKE) clean -C Libft/
+		$(RM) srcs/*.o
 		@make -C ./libft clean
+		@echo "$(GREEN)[CLEAN]:\t\t$(YELLOW)objs"
 		@${RM} ${OBJ}
-		@printf "Object .o files have been deleted.\n"
-		@rm -f *.o
 
 fclean : clean
 		@make -C ./libft fclean
