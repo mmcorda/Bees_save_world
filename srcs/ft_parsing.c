@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 15:11:19 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 17:36:23 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 19:42:48 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static int	ft_print_next_line(t_window *win, char *file, int nbr_line)
 		i++;
 	}
 	win->map[i++] = ft_strdup(line);
+	free(line);
 	close (fd);
 	return (1);
 }

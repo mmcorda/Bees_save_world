@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 12:11:54 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 18:56:10 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 19:49:28 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	deal_key(int key, t_window *win)
 int	ft_esc(t_window *win)
 {
 	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
-	printf("\e[0;35mSure ? Game closes up !\n");
-	return (0);
+	printf("\e[0;35mGame closes up !\n");
+	exit (0);
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:39:37 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 18:47:55 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 19:38:41 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_window
 int		get_next_line(int fd, char **line);
 int		ft_parsing(t_window *win, char *file);
 void	ft_define_img(t_window *win);
-int		deal_key(int key,t_window *win);
+int		deal_key(int key, t_window *win);
 int		ft_get_all(char **map);
 void	ft_print_map(t_window *win);
 void	ft_print_map_exit(t_window *win, t_check_map var);
