@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 15:11:19 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 19:42:48 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/23 20:13:06 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,20 +112,20 @@ int	ft_parsing(t_window *win, char *file)
 	fd = open(file, O_RDONLY);
 	if (!ft_check_name(file, ".ber") || fd == -1)
 	{
-		printf("Error: Your maps is not found or is not format\n");
+		printf("\e[0;33mError: Your maps is not found or is not format\n");
 		return (0);
 	}
 	nbr_line = count_line(fd);
 	close(fd);
 	if (nbr_line < 3)
 	{
-		printf("\e[1;30mError: Oops! Map Less than 3 lines or Empty\n");
+		printf("\e[0;34mError: Oops! Map Less than 3 lines or Empty\n");
 		return (0);
 	}
 	if (!ft_print_next_line(win, file, nbr_line)
 		|| !ft_check_walls(win->map, nbr_line - 1))
 	{
-		printf("Error: Oops! Something wrong in your map\n");
+		printf("\e[0;33mError: Oops! Something wrong in your map\n");
 		return (0);
 	}
 	return (1);
