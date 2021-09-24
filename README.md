@@ -1,4 +1,4 @@
-# Bees_save_world
+# Bees🐝 (can) save world and Thanks for all of them!
 
 This project is a very small 2D game.<br />
 It is built to make you work with textures, sprites.<br />
