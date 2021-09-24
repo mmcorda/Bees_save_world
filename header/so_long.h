@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:39:37 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 19:38:41 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/24 12:33:06 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../libft/libft.h"
 # include <fcntl.h>
-# include <mlx.h>
+# include "../minilibx/mlx.h"
 # include <string.h>
 # include <stdlib.h>
 # include <stddef.h>
@@ -78,5 +78,6 @@ void	ft_down(int key, t_window *win);
 void	ft_game_over(t_window *win);
 void	ft_move(int key, t_window *win);
 int		ft_esc(t_window *win);
+void	free_line(char *tab);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 12:11:54 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 19:49:28 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/24 12:50:08 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static	int	build_height(char *file)
 		free (line);
 	}
 	nbr_line++;
+	free_line(line);
 	close (fd);
 	return (nbr_line);
 }
@@ -41,7 +42,7 @@ static	int	build_width(char *file)
 	fd = open(file, O_RDONLY);
 	get_next_line(fd, &line);
 	i = ft_strlen(line);
-	free(line);
+	free_line(line);
 	close (fd);
 	return (i);
 }

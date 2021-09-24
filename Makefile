@@ -6,7 +6,7 @@
 #    By: chchao <chchao@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 15:35:27 by chchao            #+#    #+#              #
-#    Updated: 2021/09/23 18:45:37 by chchao           ###   ########.fr        #
+#    Updated: 2021/09/24 12:32:52 by chchao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ HEADER_FILE 	= so_long.h\
 SRCS    		= ft_parsing.c get_next_line.c main.c \
 				  ft_define_img.c ft_get_all.c ft_print_map.c \
 				  ft_print_map_exit.c  ft_print_map_flower.c \
-				  ft_print_map_bee.c ft_move.c ft_game_over.c 
+				  ft_print_map_bee.c ft_move.c ft_game_over.c \
+				  free_line.c
 
 SRC				= $(addprefix ${FOLDER},${SRCS})
 

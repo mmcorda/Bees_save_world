@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 15:11:19 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/23 20:13:06 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/24 12:44:22 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ static int	ft_print_next_line(t_window *win, char *file, int nbr_line)
 		win->map[i] = ft_strdup(line);
 		if (size_line == -1)
 			size_line = (int)ft_strlen(win->map[i]);
+		free (line);
 		if ((int)ft_strlen(win->map[i]) != size_line)
 			return (0);
-		free(line);
 		i++;
 	}
 	win->map[i++] = ft_strdup(line);
-	free(line);
+	free_line(line);
 	close (fd);
 	return (1);
 }
@@ -99,6 +99,7 @@ static	int	count_line(int fd)
 		free (line);
 	}
 	nbr_line++;
+	free_line(line);
 	return (nbr_line);
 }
 
@@ -113,20 +114,20 @@ int	ft_parsing(t_window *win, char *file)
 	if (!ft_check_name(file, ".ber") || fd == -1)
 	{
 		printf("\e[0;33mError: Your maps is not found or is not format\n");
-		return (0);
+		exit (1);
 	}
 	nbr_line = count_line(fd);
 	close(fd);
 	if (nbr_line < 3)
 	{
 		printf("\e[0;34mError: Oops! Map Less than 3 lines or Empty\n");
-		return (0);
+		exit (1);
 	}
 	if (!ft_print_next_line(win, file, nbr_line)
 		|| !ft_check_walls(win->map, nbr_line - 1))
 	{
 		printf("\e[0;33mError: Oops! Something wrong in your map\n");
-		return (0);
+		exit (1);
 	}
 	return (1);
 }
