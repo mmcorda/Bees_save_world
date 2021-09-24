@@ -6,7 +6,7 @@
 /*   By: chchao <chchao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 12:11:54 by chchao            #+#    #+#             */
-/*   Updated: 2021/09/24 12:50:08 by chchao           ###   ########.fr       */
+/*   Updated: 2021/09/24 15:50:57 by chchao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ static	int	build_width(char *file)
 int	deal_key(int key, t_window *win)
 {
 	if (key == KEY_ECHAP)
+	{
+		printf("\e[0;33m[Esc]");
+		printf("\e[0;35mGame closes up !\n");
 		exit(0);
+	}
 	ft_move(key, win);
 	return (0);
 }
